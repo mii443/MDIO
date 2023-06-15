@@ -6,11 +6,7 @@ module Top(
 );
 
     reg [4:0] mdc_cnt = 0;
-    reg mdc_cnt_half = 0;
-    reg mdc_cnt_half_flag = 1;
     wire mdclock;
-    wire [15:0] mdc_cnt_max;
-    reg [15:0] reg_mdc_cnt_max = 30;
 
     always @(posedge CLK) begin
         mdc_cnt <= mdclock ? 0 : mdc_cnt + 1;
@@ -42,7 +38,7 @@ module Top(
     reg [4:0] reg_phy_address = 5'b00001;
     reg [4:0] reg_register_address = 5'b00000;
 
-    reg [15:0] read = 16'b0;
+    reg [15:0] read = 0;
     reg [15:0] write = 16'b0000111111111010;
 
     reg [15:0] led_read = 0;
@@ -52,7 +48,6 @@ module Top(
         case (state)
             S_IDLE: begin
                 state <= S_PREAMBLE;
-                mdc_cnt_half <= 0;
             end
 
             S_PREAMBLE: begin
@@ -110,6 +105,7 @@ module Top(
 
             S_TURN: begin
                 if (cnt == 1) begin
+                    cnt <= 0;
                     if (read_flag == 1)
                         state <= S_READ;
                     else
@@ -194,8 +190,7 @@ module Top(
         endcase
     end
 
-    assign mdc_cnt_max = reg_mdc_cnt_max;
-    assign mdclock = mdc_cnt == mdc_cnt_max;
+    assign mdclock = mdc_cnt == 27;
     assign MDC = mdclock;
 
     assign LED = ~read[9:6];

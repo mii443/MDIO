@@ -1,15 +1,14 @@
 GowinSynthesis start
 Running parser ...
 Analyzing Verilog file '/home/mii/work/MDIO/src/Top.v'
-WARN  (EX2810) : Extra semicolon in $unit (global) scope("/home/mii/work/MDIO/src/Top.v":203)
+WARN  (EX2810) : Extra semicolon in $unit (global) scope("/home/mii/work/MDIO/src/Top.v":198)
 Compiling module 'Top'("/home/mii/work/MDIO/src/Top.v":1)
-WARN  (EX3780) : Using initial value of 'reg_mdc_cnt_max' since it is never assigned("/home/mii/work/MDIO/src/Top.v":13)
-WARN  (EX3780) : Using initial value of 'read_preamble' since it is never assigned("/home/mii/work/MDIO/src/Top.v":39)
-WARN  (EX3780) : Using initial value of 'write_preamble' since it is never assigned("/home/mii/work/MDIO/src/Top.v":40)
-WARN  (EX3780) : Using initial value of 'reg_phy_address' since it is never assigned("/home/mii/work/MDIO/src/Top.v":42)
-WARN  (EX3780) : Using initial value of 'reg_register_address' since it is never assigned("/home/mii/work/MDIO/src/Top.v":43)
-WARN  (EX3780) : Using initial value of 'write' since it is never assigned("/home/mii/work/MDIO/src/Top.v":46)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("/home/mii/work/MDIO/src/Top.v":16)
+WARN  (EX3780) : Using initial value of 'read_preamble' since it is never assigned("/home/mii/work/MDIO/src/Top.v":35)
+WARN  (EX3780) : Using initial value of 'write_preamble' since it is never assigned("/home/mii/work/MDIO/src/Top.v":36)
+WARN  (EX3780) : Using initial value of 'reg_phy_address' since it is never assigned("/home/mii/work/MDIO/src/Top.v":38)
+WARN  (EX3780) : Using initial value of 'reg_register_address' since it is never assigned("/home/mii/work/MDIO/src/Top.v":39)
+WARN  (EX3780) : Using initial value of 'write' since it is never assigned("/home/mii/work/MDIO/src/Top.v":42)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("/home/mii/work/MDIO/src/Top.v":12)
 NOTE  (EX0101) : Current top module is "Top"
 [5%] Running netlist conversion ...
 Running device independent optimization ...
