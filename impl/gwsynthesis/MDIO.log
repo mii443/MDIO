@@ -1,14 +1,19 @@
 GowinSynthesis start
 Running parser ...
 Analyzing Verilog file '/home/mii/work/MDIO/src/Top.v'
-WARN  (EX2810) : Extra semicolon in $unit (global) scope("/home/mii/work/MDIO/src/Top.v":198)
+WARN  (EX2810) : Extra semicolon in $unit (global) scope("/home/mii/work/MDIO/src/Top.v":243)
+Analyzing Verilog file '/home/mii/work/MDIO/src/uart.v'
+WARN  (EX3073) : Port 'LED' remains unconnected for this instance("/home/mii/work/MDIO/src/Top.v":46)
 Compiling module 'Top'("/home/mii/work/MDIO/src/Top.v":1)
-WARN  (EX3780) : Using initial value of 'read_preamble' since it is never assigned("/home/mii/work/MDIO/src/Top.v":35)
-WARN  (EX3780) : Using initial value of 'write_preamble' since it is never assigned("/home/mii/work/MDIO/src/Top.v":36)
-WARN  (EX3780) : Using initial value of 'reg_phy_address' since it is never assigned("/home/mii/work/MDIO/src/Top.v":38)
-WARN  (EX3780) : Using initial value of 'reg_register_address' since it is never assigned("/home/mii/work/MDIO/src/Top.v":39)
-WARN  (EX3780) : Using initial value of 'write' since it is never assigned("/home/mii/work/MDIO/src/Top.v":42)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("/home/mii/work/MDIO/src/Top.v":12)
+WARN  (EX3780) : Using initial value of 'read_preamble' since it is never assigned("/home/mii/work/MDIO/src/Top.v":79)
+WARN  (EX3780) : Using initial value of 'write_preamble' since it is never assigned("/home/mii/work/MDIO/src/Top.v":80)
+WARN  (EX3780) : Using initial value of 'reg_phy_address' since it is never assigned("/home/mii/work/MDIO/src/Top.v":82)
+WARN  (EX3780) : Using initial value of 'reg_register_address' since it is never assigned("/home/mii/work/MDIO/src/Top.v":83)
+WARN  (EX3780) : Using initial value of 'write' since it is never assigned("/home/mii/work/MDIO/src/Top.v":86)
+WARN  (EX3791) : Expression size 5 truncated to fit in target size 4("/home/mii/work/MDIO/src/Top.v":29)
+Compiling module 'UART'("/home/mii/work/MDIO/src/uart.v":1)
+WARN  (EX3791) : Expression size 5 truncated to fit in target size 4("/home/mii/work/MDIO/src/uart.v":98)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("/home/mii/work/MDIO/src/Top.v":57)
 NOTE  (EX0101) : Current top module is "Top"
 [5%] Running netlist conversion ...
 Running device independent optimization ...

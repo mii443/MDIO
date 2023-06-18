@@ -3,6 +3,10 @@
   {
    "Path" : "/home/mii/work/MDIO/src/Top.v",
    "Type" : "verilog"
+  },
+  {
+   "Path" : "/home/mii/work/MDIO/src/uart.v",
+   "Type" : "verilog"
   }
  ],
  "IncludePath" : [

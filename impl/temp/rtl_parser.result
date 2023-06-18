@@ -5,6 +5,16 @@
   "InstName" : "Top",
   "ModuleFile" : "/home/mii/work/MDIO/src/Top.v",
   "ModuleLine" : 1,
-  "ModuleName" : "Top"
+  "ModuleName" : "Top",
+  "SubInsts" : [
+   {
+    "InstFile" : "/home/mii/work/MDIO/src/Top.v",
+    "InstLine" : 40,
+    "InstName" : "uart",
+    "ModuleFile" : "/home/mii/work/MDIO/src/uart.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "UART"
+   }
+  ]
  }
 ]

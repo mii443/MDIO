@@ -1,16 +1,60 @@
 module Top(
     input CLK,
+
+// MDIO
     output MDC,
     inout MDIO,
-    output [3:0] LED
+
+// RMII
+    input RMII_CLK,
+    input [1:0] RMII_RX,
+    output RMII_RST,
+
+    output [3:0] LED,
+    output UART_TX
 );
+
+    reg [31:0] rmii_cnt = 0;
+    reg [3:0] reg_led = 1;
+    reg [7:0] eth_in = 0;
+    reg [15:0] preamble = 0;
+    reg [8:0] preamble_cnt = 0;
+    
+    always @(posedge RMII_CLK) begin
+        preamble <= preamble << 2;
+        preamble[0:0] <= RMII_RX[0:0];
+        preamble[1:1] <= RMII_RX[1:1];
+
+        if (preamble == 16'hd555) begin
+            reg_led = reg_led + 1;
+        end
+    end
+
+    assign RMII_RST = 1;
+
+
+    reg [7:0] uart_data;
+    reg uart_start;
+    wire uart_busy;
+
+    UART uart(
+        .clock(CLK),
+        .data_in(uart_data),
+        .start(uart_start),
+        .tx_busy(uart_busy),
+        .tx(UART_TX)
+    );
+
+    always @(posedge CLK) begin
+        uart_data <= 8'b10000001;
+        uart_start <= 1'b1;
+    end
 
     reg [4:0] mdc_cnt = 0;
     wire mdclock;
 
-    always @(posedge CLK) begin
+    always @(posedge CLK)
         mdc_cnt <= mdclock ? 0 : mdc_cnt + 1;
-    end
 
     localparam S_IDLE = 0;
     localparam S_PREAMBLE = 1;
@@ -25,7 +69,7 @@ module Top(
     reg [3:0] state = S_IDLE;
 
     reg [31:0] cnt = 0;
-    reg read_flag = 1;
+    reg read_flag = 0;
 
     reg mdio_write = 0;
     reg mdio_out_en = 0;
@@ -35,10 +79,10 @@ module Top(
     reg [3:0] read_preamble = 4'b0110;
     reg [3:0] write_preamble = 4'b0101;
 
-    reg [4:0] reg_phy_address = 5'b00001;
-    reg [4:0] reg_register_address = 5'b00000;
+    reg [4:0] reg_phy_address = 5'b00011;
+    reg [4:0] reg_register_address = 5'b00101;
 
-    reg [15:0] read = 0;
+    reg [15:0] read = 16'b0000000000000000;
     reg [15:0] write = 16'b0000111111111010;
 
     reg [15:0] led_read = 0;
@@ -185,7 +229,7 @@ module Top(
             S_WRITE: begin
                 mdio_out_en = 1;
                 mdio_write <= write[15 - cnt];
-                read_flag <= 1;
+                read_flag <= 0;
             end
         endcase
     end
@@ -193,6 +237,7 @@ module Top(
     assign mdclock = mdc_cnt == 27;
     assign MDC = mdclock;
 
-    assign LED = ~read[9:6];
+    assign LED = ~reg_led;
+
 
 endmodule;

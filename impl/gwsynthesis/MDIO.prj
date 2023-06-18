@@ -5,6 +5,7 @@
     <Device id="GW2A-18C" package="PBGA256" speed="8" partNumber="GW2A-LV18PG256C8/I7"/>
     <FileList>
         <File path="/home/mii/work/MDIO/src/Top.v" type="verilog"/>
+        <File path="/home/mii/work/MDIO/src/uart.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

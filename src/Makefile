@@ -1,4 +1,4 @@
-SOURCES = Top.v
+SOURCES = uart.v Top.v
 TESTBENCH = tb.v
 
 simulate: tb.vcd
